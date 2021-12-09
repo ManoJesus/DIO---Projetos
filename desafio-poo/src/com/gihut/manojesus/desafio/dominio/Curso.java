@@ -1,14 +1,11 @@
 package com.gihut.manojesus.desafio.dominio;
 
-public class Curso {
-    private  String titulo;
-    private String descricao;
+public class Curso extends Conteudo{
     private String professor;
     private int cargaHoraria;
 
     public Curso(String titulo, String descricao, String professor, int cargaHoraria) {
-        this.titulo = titulo;
-        this.descricao = descricao;
+        super(titulo, descricao);
         this.professor = professor;
         this.cargaHoraria = cargaHoraria;
     }
@@ -19,21 +16,6 @@ public class Curso {
     }
 
     /*Access methods*/
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
 
     public int getCargaHoraria() {
         return cargaHoraria;
@@ -53,11 +35,13 @@ public class Curso {
 
     @Override
     public String toString() {
-        return "Curso{" +
-                "titulo='" + titulo + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", professor='" + professor + '\'' +
-                ", cargaHoraria=" + cargaHoraria +
-                '}';
+        return super.toString() +
+                "\n\t\tProfessor: "+professor+
+                "\n\t\tCarga Horaria do curso: "+cargaHoraria + " hrs";
+    }
+
+    @Override
+    public double caluclarXPRecebido() {
+        return QUANTIDADE_XP_PADRAO * cargaHoraria;
     }
 }
